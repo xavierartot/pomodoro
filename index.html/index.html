@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Xavier </title>
+  </head>
+</html>
+<body>
+  <div class="container">
+    <h1>Free code Camp - Pomodoro</h1>
+    <div class="button"><span id="clock"></span>
+      <div class="session">
+        <div>session</div><span class="session__plus">+</span><span class="session__time">25</span><span class="session__minus">-</span>
+      </div>
+      <div class="break">
+        <div>break</div><span class="break__plus">+</span><span class="break__time">25</span><span class="break__minus">-</span>
+      </div><span class="time">25:00</span><span class="break-time">25:00</span><span class="play">play</span><span class="pause">pause</span>
+    </div>
+    <svg id="my-svg" xmlns="http://www.w3.org/2000/svg" version="1.1" \ height="298" width="100%" class="arc">
+      <path stroke-dasharray="472" stroke-dashoffset="0.00" \ d="M 20, 0,m -150, 0,a 150,150 0 1,0 300,0 150,150 0 1,0 -300,0"></path>
+    </svg>
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+        <symbol id="icon-stop" viewbox="0 0 32 32">
+          <title>stop</title>
+          <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z" class="path1"></path>
+          <path d="M21 8l-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z" class="path1"></path>
+        </symbol>
+      </defs>
+    </svg>
+    <svg class="icon icon-stop">
+      <use xlink:href="#icon-stop"></use>
+    </svg>
+    <footer>
+      <div class="thx">Thanks for watching.</div>
+      <div>Made with 
+        <div><span class="striked">love </span><span class="italic">a keyboard</span></div>
+      </div>
+    </footer>
+  </div>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/vivus/0.3.2/vivus.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</body>

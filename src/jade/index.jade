@@ -1,0 +1,63 @@
+//- utils.jade
+mixin script(src)
+  script(type='text/javascript', src=src)
+mixin style(href)
+  link(rel='stylesheet', type='text/css', href=href)
+doctype html
+
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    +style('https://fonts.googleapis.com/css?family=Roboto:100')
+    +style('style.css')
+    
+    title Xavier 
+
+body
+  div.container
+    h1 Free code Camp - Pomodoro
+    div.button
+      span#clock
+      .session
+        div session
+        span.session__plus +
+        span.session__time 25
+        span.session__minus -
+      .break
+        div break
+        span.break__plus +
+        span.break__time 25
+        span.break__minus -
+      span.time 25:00
+      span.break-time 25:00
+      span.play play
+      span.pause pause
+    //-http://complexdan.com/svg-circleellipse-to-path-converter/
+    svg#my-svg.arc(xmlns="http://www.w3.org/2000/svg" version='1.1' \
+        height="298" width="100%")
+      path(stroke-dasharray='472', stroke-dashoffset='0.00', \
+      d='M 20, 0,m -150, 0,a 150,150 0 1,0 300,0 150,150 0 1,0 -300,0')
+
+    svg(style='position: absolute; width: 0; height: 0; overflow: hidden', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+      defs
+        symbol#icon-stop(viewbox='0 0 32 32')
+          title stop
+          path.path1(d='M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z')
+          path.path1(d='M21 8l-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z')
+
+
+    svg.icon.icon-stop
+      use(xlink:href='#icon-stop')
+
+    footer
+      div.thx Thanks for watching.
+      div Made with 
+        div
+          span.striked love 
+          span.italic a keyboard
+
+  //-+script('app.js')
+  +script('//cdnjs.cloudflare.com/ajax/libs/vivus/0.3.2/vivus.js')
+  +script('script.js')
+

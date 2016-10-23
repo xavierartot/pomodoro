@@ -1,0 +1,163 @@
+//https://coolors.co/2b2d42-8d99ae-edf2f4-ef233c-d80032
+$purple      =       #2b2d42 //purple fonce
+$gray-blue   =       #8d99ae //gray-blue
+$white       =       #edf2f4 //whithe gray
+$red-clear   =       #ef233c //red pantone
+$red         =       #d80032 //red fonce
+
+body
+  background-color $purple 
+  color $white
+  display flex;
+  font-family 'Roboto', sans-serif
+  text-align center
+  justify-content center
+  align-items center
+  flex-wrap wrap
+  align-content center
+h1
+  margin 0 0 1em
+  font-size 1em
+span
+  display block
+  cursor pointer
+
+.alert
+  color $red !important 
+  background-color $gray-blue !important 
+  border 1px solid $red !important
+  //background-color $red !important
+
+.hide
+  display none !important
+.show
+  display block !important
+
+.container
+   width 80%
+   height 837px
+   position relative
+   color $white
+   font-size 2em
+   padding-top 2em
+
+.button
+   @media screen and (max-width 526px)
+     width 372px
+   width 442px
+   margin auto
+   .session,.break
+     float left
+     div
+       border 1px solid $white
+       padding 0px 10px 0px 10px
+       margin 0 0 30px 0
+     span
+       border 1px solid $white
+       color $white
+       background-color $gray-blue
+       float left
+       padding: 0px 10px 0px 10px
+     .session__plus, .break__plus 
+       border-right 0
+       margin-top: 6px
+      -user-select: none
+     .break__time, .session__time 
+       background-color $white 
+       color: $gray-blue 
+       border-radius 5px 
+       padding: 5px 15px 5px 15px
+       cursor: text
+     .session__minus, .break__minus 
+       border-left 0
+       padding: 0 14px 0 11px
+       margin-top: 6px
+       cursor: pointer
+       -user-select: none
+   .break
+     float: right
+
+ #clock,.time, .play, .pause
+   font-size: 1em
+   color $red
+ .break-time 
+   display: none
+ .time 
+   cursor: default
+   position: relative
+   top: 64px
+ .play
+   position: absolute  
+   margin-top: 147px
+   margin-left: 196px
+   //display: none
+ .pause
+   position: absolute  
+   margin-top: 147px
+   margin-left: 179px
+   display: none
+ svg.arc
+   position: absolute
+   top: 94px
+   left: 50%
+   transform: translateX(-50%)
+   width: 328px
+   height: 330px
+   z-index: -1
+   path
+     transform translate(50%,50% )
+     stroke: #fff
+     stroke-width: 7
+     fill: #2b2d42
+
+.icon 
+  display: inline-block
+  color: #444444
+  color $red 
+  width: .6em
+  height: 1em
+  fill red
+.icon-stop 
+  color $red 
+  font-size: 2em
+  top: 77px
+  left: 60px
+  text-indent: 0
+  position: relative
+  display: none
+  cursor: pointer
+  animation: spin 8s linear infinite
+  margin: 0
+@keyframes spin {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}
+.pause 
+  -webkit-animation-play-state: paused !important 
+  -moz-animation-play-state: paused !important 
+  -o-animation-play-state: paused !important
+  animation-play-state: paused !important
+
+footer
+  display: block
+  margin-top: 310px
+  display: block
+  div.thx
+    display: block
+  div
+    font-size: 1.5rem
+    text-align: center
+    margin-bottom: 0
+    display: inline
+    .italic
+      font-style italic
+      display: inline
+      cursor: default 
+    .striked 
+      text-decoration line-through
+      display: inline
+      cursor: default 

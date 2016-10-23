@@ -1,0 +1,6 @@
+"use strict";
+
+module.exports = function (a, b) {
+  return a * b;
+};
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvdW50ZXItbW9kdWxlLmpzIl0sIm5hbWVzIjpbIm1vZHVsZSIsImV4cG9ydHMiLCJhIiwiYiJdLCJtYXBwaW5ncyI6Ijs7QUFBQUEsT0FBT0MsT0FBUCxHQUFpQixVQUFVQyxDQUFWLEVBQWFDLENBQWIsRUFBZ0I7QUFDL0IsU0FBT0QsSUFBSUMsQ0FBWDtBQUNELENBRkQiLCJmaWxlIjoiY291bnRlci1tb2R1bGUuanMiLCJzb3VyY2VzQ29udGVudCI6WyJtb2R1bGUuZXhwb3J0cyA9IGZ1bmN0aW9uIChhLCBiKSB7XG4gIHJldHVybiBhICogYjtcbn07XG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
