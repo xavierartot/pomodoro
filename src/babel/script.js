@@ -1,8 +1,8 @@
-let fcc='free code camp';
-(function(fcc) {
+(function() {
   //timer
-  let display = document.querySelector('.time'),
-  displayBreak = document.querySelector('.break-time'); 
+  let display = document.querySelector('.time'),anim, watch ,
+  displayBreak = document.querySelector('.break-time'),watchBreak , animBreak
+  
   // define function for setInterval
   function getSeconds(hour) {
     let min = hour.textContent.split(':')
@@ -20,8 +20,7 @@ let fcc='free code camp';
       }
     }
   }
-  let anim;
-  let watch = (display ) => {
+  watch = () => {
     let seconds, minutes;
       anim = setInterval(circularLoop(getSeconds(display) , 0, function(currSecond) {
       //parseInt() return integer ex 110/ 60 = 1.83333 with parseInt it's 1
@@ -37,6 +36,20 @@ let fcc='free code camp';
 
       if (currSecond === 0) {
         clearInterval(anim)
+        watchBreak()
+      }
+    }), 1000);
+  }
+  watchBreak = () => {
+    let seconds, minutes;
+      animBreak = setInterval(circularLoop(getSeconds(displayBreak) , 0, function(currSecond) {
+      minutes = parseInt(currSecond  / 60, 10);
+      seconds = parseInt(currSecond  % 60, 10);
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      display.textContent = minutes + ":" + seconds;
+      if (currSecond === 0) {
+        clearInterval(animBreak)
       }
     }), 1000);
   }
@@ -131,6 +144,7 @@ let fcc='free code camp';
   }
   function stopPodomoro(e) {
     clearInterval(anim)
+    clearInterval(animBreak)
     play.classList.add('show')
     play.classList.remove('hide')
     pause.classList.add('hide')
@@ -174,19 +188,6 @@ let fcc='free code camp';
     orig.style.stroke = '';
     orig.style.strokeDasharray = '';
   }
-  
-  //let d = 5000
-  //new Vivus('my-svg', {
-    //duration: d,
-    //type: 'delayed',
-    //start: 'manual',
-    //onReady : (m) => {
-      //m.el.setAttribute('height', 'auto');
-      //m.el.play()
 
-    //},
-    //animTimingFunction: Vivus.EASE
-  //})
-
-}(fcc));//END
+}());//END
 
