@@ -1,4 +1,5 @@
 (function() {
+  console.log(1);
   addMessage()
   function addMessage( ) {
     createNewChatMessage({

@@ -1,8 +1,8 @@
 (function() {
   //timer
   let display = document.querySelector('.time'),anim, watch ,
-  displayBreak = document.querySelector('.break-time'),watchBreak , animBreak
-  
+  displayBreak = document.querySelector('.break-time'),watchBreak , animBreak,
+  audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
   // define function for setInterval
   function getSeconds(hour) {
     let min = hour.textContent.split(':')
@@ -29,6 +29,42 @@
       // seconds = 122s / 60 = 120 and remain 2
       seconds = parseInt(currSecond  % 60, 10);
 
+
+      //time
+        //20
+        //console.log((currSecond) / (25 * 60)); //percentage
+        //console.log(( (currSecond) / (25 * 60) * 472).toFixed() )
+        //console.log(currSecond );
+
+        //SVG
+        //transform second to perimetre
+        //path(stroke-dasharray='472', stroke-dashoffset='0.00', \
+        //1== 1s donc 472 sec = 7.8 minutes soit 472/60 pour avoir les minutes
+        //min * 60 = seconds 
+        //donc 10min * 60 on obtient le resutat en seconde et le diametre du 
+        //perimetre
+        //let t = currSecond / (25 * 60) * 472
+        //let distancePerPoint = 1
+        //let orig = document.querySelector('#my-svg path'), length, timer;
+        //let pathLength = orig.getTotalLength();
+
+        //orig.style.stroke = '#000';
+        //orig.style.strokeDasharray = t.toFixed();
+        //console.log(t.toFixed());
+        //console.log( pathLength  );
+
+        //function increaseLength(){
+          ////var pathLength = orig.getTotalLength();
+          //length += distancePerPoint;
+          ////length=0 and path lenght = stroke-dasharray soit 472
+          //orig.style.strokeDasharray = [length,pathLength].join(' ');
+          ////console.log([length,pathLength].join(' '));
+          //if (length >= pathLength) 
+            //clearInterval(timer);
+        //}
+
+      //sessionTime  
+
       //print a 0 first if minuste is less than 10 minutes 
       minutes = minutes < 10 ? "0" + minutes : minutes;
       seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -37,6 +73,7 @@
       if (currSecond === 0) {
         clearInterval(anim)
         watchBreak()
+        audio.play();
       }
     }), 1000);
   }
@@ -50,6 +87,7 @@
       display.textContent = minutes + ":" + seconds;
       if (currSecond === 0) {
         clearInterval(animBreak)
+        audio.play();
       }
     }), 1000);
   }
@@ -153,40 +191,6 @@
     stop.classList.add('hide')
     let sessionTime = document.querySelector('.session__time ').innerHTML
     time.textContent = sessionTime  + ':00'
-  }
-  //SVG
-  //transform second to perimetre
-  //path(stroke-dasharray='472', stroke-dashoffset='0.00', \
-  //1== 1s donc 472 sec = 7.8 minutes soit 472/60 pour avoir les minutes
-  //min * 60 = seconds 
-  //donc 10min * 60 on obtient le resutat en seconde et le diametre du 
-  //perimetre
-  let distancePerPoint = 1;
-  let drawFPS          = 1000/10;
-  let orig = document.querySelector('path'), length, timer;
-
-  orig.addEventListener('mouseover',startDrawingPath,true);
-  orig.addEventListener('mouseout', stopDrawingPath, true);
-
-  function startDrawingPath(){
-    length = 0;
-    orig.style.stroke = '#f60';
-    timer = setInterval(increaseLength, 1000 );
-  }
-
-  function increaseLength(){
-    var pathLength = orig.getTotalLength();
-    length += distancePerPoint;
-    //length=0 and path lenght = stroke-dasharray soit 472
-    orig.style.strokeDasharray = [length,pathLength].join(' ');
-    console.log([length,pathLength].join(' '));
-    if (length >= pathLength) clearInterval(timer);
-  }
-
-  function stopDrawingPath(){
-    clearInterval(timer);
-    orig.style.stroke = '';
-    orig.style.strokeDasharray = '';
   }
 
 }());//END
