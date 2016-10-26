@@ -2,11 +2,23 @@
   //timer
   let display = document.querySelector('.time'),anim, watch ,
   displayBreak = document.querySelector('.break-time'),watchBreak , animBreak,
-  audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
+  audio = new Audio('http://artot.net/sounds/win.mp3'), percentage,
+    sessionTime = document.querySelector('.session__time ')
+
+        
+
   // define function for setInterval
   function getSeconds(hour) {
-    let min = hour.textContent.split(':')
-    return parseInt(min[0], 10)* 60
+    //console.log(min);
+    if (hour < 10) {
+      console.log(hour);
+      return hour
+    } else {
+      let min = hour.textContent.split(':')
+      console.log(hour);
+      return parseInt(min[0], 10)* 60
+    }
+    
   }
   // define function for setInterval
   function circularLoop(init, min, action) {
@@ -20,6 +32,13 @@
       }
     }
   }
+
+  let orig = document.querySelector('.arcAnim path'), length=0, timer,
+    //arcAnim = document.querySelector('.arcAnim'),
+    pathLength= 472, 
+    //pathLength= orig.getTotalLength(), 
+    distancePerPoint 
+
   watch = () => {
     let seconds, minutes;
       anim = setInterval(circularLoop(getSeconds(display) , 0, function(currSecond) {
@@ -28,19 +47,27 @@
       minutes = parseInt(currSecond  / 60, 10);
       // seconds = 122s / 60 = 120 and remain 2
       seconds = parseInt(currSecond  % 60, 10);
+      //print a 0 first if minuste is less than 10 minutes 
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      display.textContent = minutes + ":" + seconds;
 
+      //svg
+      distancePerPoint = 472 / getSeconds(sessionTime )
+      length += distancePerPoint;
+      //length=0 and path lenght = stroke-dasharray soit 472
+      orig.style.strokeDasharray = [length,pathLength].join(' ');
+      console.log([length,pathLength].join(' '));
 
-      //time
-        //20
-        //console.log((currSecond) / (25 * 60)); //percentage
-        //console.log(( (currSecond) / (25 * 60) * 472).toFixed() )
-        //console.log(currSecond );
+      if (currSecond === 0) {
+        clearInterval(anim)
+        watchBreak()
+        audio.play();
+        length=0
+      }
 
         //SVG
         //transform second to perimetre
-        //path(stroke-dasharray='472', stroke-dashoffset='0.00', \
-        //1== 1s donc 472 sec = 7.8 minutes soit 472/60 pour avoir les minutes
-        //min * 60 = seconds 
         //donc 10min * 60 on obtient le resutat en seconde et le diametre du 
         //perimetre
         //let t = currSecond / (25 * 60) * 472
@@ -53,33 +80,11 @@
         //console.log(t.toFixed());
         //console.log( pathLength  );
 
-        //function increaseLength(){
-          ////var pathLength = orig.getTotalLength();
-          //length += distancePerPoint;
-          ////length=0 and path lenght = stroke-dasharray soit 472
-          //orig.style.strokeDasharray = [length,pathLength].join(' ');
-          ////console.log([length,pathLength].join(' '));
-          //if (length >= pathLength) 
-            //clearInterval(timer);
-        //}
-
-      //sessionTime  
-
-      //print a 0 first if minuste is less than 10 minutes 
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-      display.textContent = minutes + ":" + seconds;
-
-      if (currSecond === 0) {
-        clearInterval(anim)
-        watchBreak()
-        audio.play();
-      }
-    }), 1000);
+      }), 1000);
   }
   watchBreak = () => {
     let seconds, minutes;
-      animBreak = setInterval(circularLoop(getSeconds(displayBreak) , 0, function(currSecond) {
+    animBreak = setInterval(circularLoop(getSeconds(displayBreak) , 0, function(currSecond) {
       minutes = parseInt(currSecond  / 60, 10);
       seconds = parseInt(currSecond  % 60, 10);
       minutes = minutes < 10 ? "0" + minutes : minutes;
@@ -129,6 +134,11 @@
     stop.classList.remove('show')
     stop.classList.add('hide')
 
+    //svg
+    //distancePerPoint = 472 / getSeconds(sessionTime )
+    length=0
+    orig.style.strokeDasharray = 472
+    orig.classList.add('hide')
     e.preventDefault();
   }
   function nextPlus(e) {
@@ -150,6 +160,12 @@
     pause.classList.remove('show')
     stop.classList.remove('show')
     stop.classList.add('hide')
+
+    //svg
+    //distancePerPoint = 472 / getSeconds(sessionTime )
+    length=0
+    orig.style.strokeDasharray = 472
+    orig.classList.add('hide')
     e.preventDefault();
   }
 
@@ -162,7 +178,10 @@
   stop.addEventListener('click', stopPodomoro);
 
   function playPodomoro(e) {
+    audio.play();
     watch(display)
+    orig.classList.remove('hide')
+
     play.classList.add('hide')
     play.classList.remove('show')
     pause.classList.add('show')
@@ -189,8 +208,14 @@
     pause.classList.remove('show')
     stop.classList.remove('show')
     stop.classList.add('hide')
-    let sessionTime = document.querySelector('.session__time ').innerHTML
-    time.textContent = sessionTime  + ':00'
+    //time
+    console.log(sessionTime);
+    let sessionStop = sessionTime.innerHTML
+    time.textContent = sessionStop  + ':00'
+    //svg
+    length=0
+    orig.style.strokeDasharray = 472
+    orig.classList.add('hide')
   }
 
 }());//END

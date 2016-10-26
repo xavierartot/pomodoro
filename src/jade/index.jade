@@ -29,15 +29,21 @@ body
         span.break__plus +
         span.break__time 25
         span.break__minus -
-      span.time 1:00
+      span.time 25:00
       span.break-time 25:00
       span.play start
       span.pause pause
+
     //-http://complexdan.com/svg-circleellipse-to-path-converter/
     svg#my-svg.arc(xmlns="http://www.w3.org/2000/svg" version='1.1' \
         height="298" width="100%")
       path(stroke-dasharray='472', stroke-dashoffset='0.00', \
       d='M 20, 0,m -150, 0,a 150,150 0 1,0 300,0 150,150 0 1,0 -300,0')
+
+    svg.arcAnim(xmlns="http://www.w3.org/2000/svg" version='1.1' \
+        height="298" width="100%")
+      path.hide(stroke-dasharray='472', stroke-dashoffset='0.00', \
+      d='M 120, 0,m 130, 0,a 150,150 0 1,0 300,0 150,150 0 1,0 -300,0')
 
     svg(style='position: absolute; width: 0; height: 0; overflow: hidden', version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
       defs

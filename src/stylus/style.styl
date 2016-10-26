@@ -5,6 +5,11 @@ $white       =       #edf2f4 //whithe gray
 $red-clear   =       #ef233c //red pantone
 $red         =       #d80032 //red fonce
 
+mask()
+  position: relative;
+  z-index: 10;
+  background-color: #2b2d42;
+
 body
   background-color $purple 
   color $white
@@ -16,8 +21,10 @@ body
   flex-wrap wrap
   align-content center
 h1
-  margin 0 0 1em
+  mask()
   font-size 1em
+  padding: 0 0 1em;
+  margin: 0;
   //text-transform capitalize 
 span
   display block
@@ -43,11 +50,13 @@ span
    padding-top 2em
 
 .button
+   mask()
    @media screen and (max-width 526px)
      width 372px
    width 442px
    margin auto
    .session,.break
+     mask()
      float left
      div
        border 1px solid $white
@@ -104,7 +113,7 @@ span
    margin-top: 147px
    margin-left: 179px
    display: none
- svg.arc
+ svg.arc , svg.arcAnim
    position: absolute
    top: 94px
    left: 50%
@@ -118,6 +127,13 @@ span
      stroke-width: 7
      fill: #2b2d42
 
+ svg.arcAnim
+   z-index: -1
+   path
+     transform translate(-53.4%,50% )
+     stroke: $red 
+     stroke-width: 8
+     fill: transparent
 .icon 
   display: inline-block
   color: #444444
